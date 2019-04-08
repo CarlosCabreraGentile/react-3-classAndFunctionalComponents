@@ -1,3 +1,7 @@
+## Structuring Apps with Class-Based Components
+
+General structure of an app, showing differences between functional and class components
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
