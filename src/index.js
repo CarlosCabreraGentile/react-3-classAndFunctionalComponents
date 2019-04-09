@@ -7,8 +7,10 @@ class App extends React.Component {
     //super function it´s related with the React.Component base class
     super(props);
 
+    // THIS IS THE ONLY TIME we do direct assigment
     this.state = {
-      lat: null
+      lat: null,
+      errorMessage: ""
     };
 
     window.navigator.geolocation.getCurrentPosition(
@@ -17,14 +19,26 @@ class App extends React.Component {
         this.setState({
           lat: position.coords.latitude
         });
+        //NOT TO DO THIS WAY, ONLY WHEN INITIALIZE
+        // this.state.lat = position.coords.latitude;
       },
-      err => console.log(err)
+      err => {
+        this.setState({
+          errorMessage: err.message
+        });
+      }
     );
   }
 
   //React says we have to define render!!
   render() {
-    return <div>Latitude: {this.state.lat}</div>;
+    return (
+      <div>
+        Latitude: {this.state.lat}
+        <br />
+        Error: {this.state.errorMessage}
+      </div>
+    );
   }
 }
 
