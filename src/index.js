@@ -2,7 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 class App extends React.Component {
-  state = { lat: null, errorMessage: '' };
+  state = {
+    lat: null,
+    errorMessage: ''
+  };
 
   //This method is used for data loading when component starts
   componentDidMount() {
