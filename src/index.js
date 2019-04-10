@@ -2,17 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 class App extends React.Component {
-  //With the constructor we initialize the state
-  constructor(props) {
-    //super function it´s related with the React.Component base class
-    super(props);
+  state = { lat: null, errorMessage: '' };
 
-    // THIS IS THE ONLY TIME we do direct assigment
-    this.state = {
-      lat: null,
-      errorMessage: ''
-    };
-
+  //This method is used for data loading when component starts
+  componentDidMount() {
     window.navigator.geolocation.getCurrentPosition(
       position => {
         //Called setState to update state
@@ -26,6 +19,10 @@ class App extends React.Component {
         this.setState({ errorMessage: err.message });
       }
     );
+  }
+
+  componentDidUpdate() {
+    console.log('UPDATE');
   }
 
   //React says we have to define render!!
